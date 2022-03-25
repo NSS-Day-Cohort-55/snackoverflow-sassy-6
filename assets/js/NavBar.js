@@ -4,45 +4,35 @@ import { RegisterForm } from "./auth/RegisterForm.js";
 import { FoodList } from "./menu/FoodsList.js";
 import * as UserManager from "./auth/UserManager.js"
 
+
+export const showLoginRegister = () => {
+    const contentElement = document.querySelector("main");
+    contentElement.innerHTML = `
+    <div class="container-fluid">
+    <div class="row">
+      <div class="col-5">
+        ${LoginForm()}
+      </div>
+      <div class="col-2"></div>
+      <div class="col-5">
+        ${RegisterForm()}
+      </div>
+  
+    </div>
+  </div>`;
+}
+
+
+
+export const showLogin = () => {
+    if (getLoggedInUser().id) {
+        return `<p class="nav-link" id="logout">Logout</p>`
+    } else {
+        return `<p class="nav-link" id="login">Login</p>`
+    }
+}
+
 export const NavBar = () => {
-    const headerElement = document.querySelector("header");
-
-    headerElement.addEventListener("click", event => {
-        if (event.target.id === "login") {
-            showLoginRegister()
-        }else if (event.target.id === "menu"){
-            FoodList();
-        }
-    })
-
-
-    const showLoginRegister = () => {
-        const contentElement = document.querySelector("main");
-        contentElement.innerHTML = `
-        <div class="container-fluid">
-        <div class="row">
-          <div class="col-5">
-            ${LoginForm()}
-          </div>
-          <div class="col-2"></div>
-          <div class="col-5">
-            ${RegisterForm()}
-          </div>
-      
-        </div>
-      </div>`;
-    }
-
-    
-
-    const showLogin = () => {
-        if (getLoggedInUser().id) {
-            return `<p class="nav-link" id="logout">Logout</p>`
-        } else {
-            return `<p class="nav-link" id="login">Login</p>`
-        }
-    }
-
     headerElement.innerHTML = `
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
         
@@ -73,3 +63,14 @@ export const NavBar = () => {
         </nav>
     `
 }
+
+
+const headerElement = document.querySelector("header");
+
+    headerElement.addEventListener("click", event => {
+        if (event.target.id === "login") {
+            showLoginRegister()
+        }else if (event.target.id === "menu"){
+            FoodList();
+        }
+    })

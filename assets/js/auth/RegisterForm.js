@@ -2,25 +2,8 @@ import * as UserManager from "./UserManager.js";
 import { NavBar } from "../NavBar.js";
 import { FoodList } from "../menu/FoodsList.js";
 
+
 export const RegisterForm = () => {
-
-  const contentElement = document.querySelector("main");
-
-  contentElement.addEventListener("click", event => {
-    event.preventDefault();
-    if (event.target.id === "register__submit") {
-      const userObject = {
-        name: document.querySelector("#register_name").value,
-        email: document.querySelector("#register_email").value,
-      }
-      UserManager.registerNewUser(userObject)
-        .then(() => {
-            NavBar();
-            FoodList();
-          })
-
-    }
-  })
 
   return `
   <div>
@@ -55,3 +38,20 @@ export const RegisterForm = () => {
 </div>
 	`
 }
+
+const contentElement = document.querySelector("main");
+
+  contentElement.addEventListener("click", event => {
+    if (event.target.id === "register__submit") {
+      const userObject = {
+        name: document.querySelector("#register_name").value,
+        email: document.querySelector("#register_email").value,
+      }
+      UserManager.registerNewUser(userObject)
+        .then(() => {
+            NavBar();
+            FoodList();
+          })
+
+    }
+  })

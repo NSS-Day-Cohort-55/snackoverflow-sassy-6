@@ -34,7 +34,7 @@ export const FoodList = () => {
             HTMLString += dessertMenu.map(dessert => FoodCard(dessert)).join('')
             HTMLString += `</div>`
             contentTarget.innerHTML = HTMLString;
-
+            console.log("FoodsList is overriding innerHTML");
 
 
             
