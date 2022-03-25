@@ -37,6 +37,12 @@ export const FoodList = () => {
             HTMLString += dessertMenu.map(dessert => FoodCard(dessert)).join('')
             HTMLString += `</div>`
             contentTarget.innerHTML = HTMLString;
+
+            foodArr.filter(menuItem =>{
+                if(menuItem.isVegetarian === true){
+
+                }
+            })
         })
 }
 
