@@ -2,7 +2,7 @@
 // import "../../node_modules/popper.js/dist/popper.min.js"
 import "../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 
-import { FoodList, organizedFoodList } from './menu/FoodsList.js'
+import { FoodList } from './menu/FoodsList.js'
 import { NavBar } from "./NavBar.js";
 import * as UserManager from './auth/UserManager.js';
 import { CheckForUser } from "./auth/CheckForUser.js";

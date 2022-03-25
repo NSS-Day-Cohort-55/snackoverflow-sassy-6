@@ -1,8 +1,9 @@
-import { getLoggedInUser } from "./auth/UserManager.js"
+import { getLoggedInUser } from "./auth/UserManager.js";
 import { LoginForm } from "./auth/LoginForm.js";
 import { RegisterForm } from "./auth/RegisterForm.js";
 import { FoodList } from "./menu/FoodsList.js";
-import * as UserManager from "./auth/UserManager.js"
+import * as UserManager from "./auth/UserManager.js";
+import { OrderList } from "./menu/OrderList.js";
 
 
 export const showLoginRegister = () => {
@@ -50,11 +51,15 @@ export const NavBar = () => {
                     <li class="nav-item">
                         <p class="nav-link" aria-current="page" id="menu">Menu</p>
                     </li>
-                    <!-- Only show my order once you login -->
-                    <!-- <li class="nav-item">
-                        <p class="nav-link" id="myOrders">My Orders</p>
-                    </li> -->
-                    <li class="nav-item">
+                    ${
+                      !UserManager.getLoggedInUser().id
+                        ? ""
+                        : `<li class="nav-item">
+                                <p class="nav-link" id="myOrders">My Orders</p>
+                            </li>
+                            <li class="nav-item">`
+                    }
+                    
                     ${showLogin()}
                     </li>
                     </ul>
