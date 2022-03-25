@@ -17,38 +17,30 @@ export const FoodList = () => {
                     lunchMenu.push(munchies)
                 }
             }
-
-            HTMLString = `<div class="row">`
+            HTMLString = `<h2>Lunch</h2>` 
+            HTMLString += `<div class="row">`
             HTMLString += lunchMenu.map(food => FoodCard(food)).join('')
             HTMLString += `</div>`
 
+            HTMLString += `<h2>Drinks</h2>`
             HTMLString += `<div class="row">`
             HTMLString += drinkMenu.map(drink => FoodCard(drink)).join('')
             HTMLString += `</div>`
 
+            HTMLString += `<h2>appetizers</h2>`
             HTMLString += `<div class="row">`
             HTMLString += appetizerMenu.map(snacks => FoodCard(snacks)).join('')
             HTMLString += `</div>`
 
+            HTMLString += `<h2>Desserts</h2>`
             HTMLString += `<div class="row">`
             HTMLString += dessertMenu.map(dessert => FoodCard(dessert)).join('')
             HTMLString += `</div>`
             contentTarget.innerHTML = HTMLString;
-
-
-
-            
-
-
         })
-
-
 }
 
-export const organizedFoodList = () =>{
 
-
-}
 
 
 
