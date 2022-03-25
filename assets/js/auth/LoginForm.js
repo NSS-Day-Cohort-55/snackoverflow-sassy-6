@@ -3,7 +3,8 @@ import { NavBar } from "../NavBar.js";
 import { FoodList } from "../menu/FoodsList.js";
 
 export const LoginForm = () => {
-  return `
+  
+	return `
   <div>
 		<h3>Login</h3>
 		<div class="input-group input-group-sm mb-3">
@@ -35,20 +36,22 @@ export const LoginForm = () => {
     </div>
     </div>
   
-	`;
-};
+	`
+}
 
 const contentElement = document.querySelector("main");
+ 
+  contentElement.addEventListener("click", event => {
+    if (event.target.id === "login__submit"){
+      const userObject = {
+        name: document.querySelector("#login_name").value,
+        email: document.querySelector("#login_email").value,
+      }
+      UserManager.loginUser(userObject).then(() => {
+        NavBar();
+        FoodList()
+      })
+     
+    }
 
-contentElement.addEventListener("click", (event) => {
-  if (event.target.id === "login__submit") {
-    const userObject = {
-      name: document.querySelector("#login_name").value,
-      email: document.querySelector("#login_email").value,
-    };
-    UserManager.loginUser(userObject).then(() => {
-      NavBar();
-      FoodList();
-    });
-  }
-});
+  })

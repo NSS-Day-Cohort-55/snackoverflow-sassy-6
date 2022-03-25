@@ -143,48 +143,5 @@
       "email": "bryan@so.com",
       "isAdmin": true
     }
-  ],
-  "orders": [
-    {
-      "id": 1,
-      "userId": 1,
-      "notes": "this was the first order ever",
-      "timestamp": 1648231765414,
-      "isPickedUp": true
-    },
-    {
-      "id": 2,
-      "userId": 1,
-      "notes": "this was the bryan's second order",
-      "timestamp": 1648231801182,
-      "isPickedUp": false
-    }
-  ],
-  "orderFoods": [
-    {
-      "id": 1,
-      "orderId": 1,
-      "foodId": 2
-    },
-    {
-      "id": 2,
-      "orderId": 1,
-      "foodId": 2
-    },
-    {
-      "id": 3,
-      "orderId": 1,
-      "foodId": 6
-    },
-    {
-      "id": 4,
-      "orderId": 2,
-      "foodId": 1
-    },
-    {
-      "id": 4,
-      "orderId": 2,
-      "foodId": 8
-    }
   ]
 }
