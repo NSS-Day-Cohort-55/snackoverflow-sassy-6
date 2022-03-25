@@ -1,24 +1,26 @@
-import { getLoggedInUser } from "./auth/UserManager.js"
+import { getLoggedInUser } from "./auth/UserManager.js";
 import { LoginForm } from "./auth/LoginForm.js";
 import { RegisterForm } from "./auth/RegisterForm.js";
 import { FoodList } from "./menu/FoodsList.js";
-import * as UserManager from "./auth/UserManager.js"
+import * as UserManager from "./auth/UserManager.js";
+import { OrderList } from "./menu/OrderList.js";
 
 export const NavBar = () => {
-    const headerElement = document.querySelector("header");
+  const headerElement = document.querySelector("header");
 
-    headerElement.addEventListener("click", event => {
-        if (event.target.id === "login") {
-            showLoginRegister()
-        }else if (event.target.id === "menu"){
-            FoodList();
-        }
-    })
+  headerElement.addEventListener("click", (event) => {
+    if (event.target.id === "login") {
+      showLoginRegister();
+    } else if (event.target.id === "menu") {
+      FoodList();
+    } else if (event.target.id === "myOrders") {
+      OrderList();
+    }
+  });
 
-
-    const showLoginRegister = () => {
-        const contentElement = document.querySelector("main");
-        contentElement.innerHTML = `
+  const showLoginRegister = () => {
+    const contentElement = document.querySelector("main");
+    contentElement.innerHTML = `
         <div class="container-fluid">
         <div class="row">
           <div class="col-5">
@@ -31,19 +33,17 @@ export const NavBar = () => {
       
         </div>
       </div>`;
+  };
+
+  const showLogin = () => {
+    if (getLoggedInUser().id) {
+      return `<p class="nav-link" id="logout">Logout</p>`;
+    } else {
+      return `<p class="nav-link" id="login">Login</p>`;
     }
+  };
 
-    
-
-    const showLogin = () => {
-        if (getLoggedInUser().id) {
-            return `<p class="nav-link" id="logout">Logout</p>`
-        } else {
-            return `<p class="nav-link" id="login">Login</p>`
-        }
-    }
-
-    headerElement.innerHTML = `
+  headerElement.innerHTML = `
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
         
             <div class="container-fluid">
@@ -60,16 +60,20 @@ export const NavBar = () => {
                     <li class="nav-item">
                         <p class="nav-link" aria-current="page" id="menu">Menu</p>
                     </li>
-                    <!-- Only show my order once you login -->
-                    <!-- <li class="nav-item">
-                        <p class="nav-link" id="myOrders">My Orders</p>
-                    </li> -->
-                    <li class="nav-item">
+                    ${
+                      !UserManager.getLoggedInUser().id
+                        ? ""
+                        : `<li class="nav-item">
+                                <p class="nav-link" id="myOrders">My Orders</p>
+                            </li>
+                            <li class="nav-item">`
+                    }
+                    
                     ${showLogin()}
                     </li>
                     </ul>
                 </div>
             </div>
         </nav>
-    `
-}
+    `;
+};
