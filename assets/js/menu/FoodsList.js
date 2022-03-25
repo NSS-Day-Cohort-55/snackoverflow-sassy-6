@@ -17,21 +17,30 @@ export const FoodList = () => {
         lunchMenu.push(munchies);
       }
     }
+
+    lunchMenu.sort((menuItem1, menuItem2) => menuItem1.price - menuItem2.price);
     HTMLString = `<h2>Lunch</h2>`;
     HTMLString += `<div class="row">`;
     HTMLString += lunchMenu.map((food) => FoodCard(food)).join("");
     HTMLString += `</div>`;
 
+    drinkMenu.sort((menuItem1, menuItem2) => menuItem1.price - menuItem2.price);
     HTMLString += `<h2>Drinks</h2>`;
     HTMLString += `<div class="row">`;
     HTMLString += drinkMenu.map((drink) => FoodCard(drink)).join("");
     HTMLString += `</div>`;
 
+    appetizerMenu.sort(
+      (menuItem1, menuItem2) => menuItem1.price - menuItem2.price
+    );
     HTMLString += `<h2>appetizers</h2>`;
     HTMLString += `<div class="row">`;
     HTMLString += appetizerMenu.map((snacks) => FoodCard(snacks)).join("");
     HTMLString += `</div>`;
 
+    dessertMenu.sort(
+      (menuItem1, menuItem2) => menuItem1.price - menuItem2.price
+    );
     HTMLString += `<h2>Desserts</h2>`;
     HTMLString += `<div class="row">`;
     HTMLString += dessertMenu.map((dessert) => FoodCard(dessert)).join("");
